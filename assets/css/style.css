@@ -2,11 +2,15 @@
 
 /* General styles */
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: 'Merriweather Sans', sans-serif;
 }
 
 h1 {
     font-family: 'Tsukimi Rounded', sans-serif;
+    font-size: 300%;
 }
 
 .game-area {
@@ -34,6 +38,11 @@ h1 {
 }
 
 #row-1 div, #row-2 div, #row-3 div {
+    display: flex;
+    /* Center Xs and Os vertically and horizontally*/
+    align-items: center;
+    justify-content: center;
+    font-size: 450%;
     background-color: lightblue;
     height: 100px;
     width: 100px;
