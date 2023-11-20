@@ -3,10 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page (or tab) title -->
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    
+    <h1 class="heading-area">
+        <i class="fa-regular fa-x"></i> Tic Tac Toe <i class="fa-regular fa-o"></i>
+    </h1>
+
+    <div class="controls-area">
+        <div class="player-mode-area">
+            <label for="1-player">1 Player</label>
+            <input id="1-player" type="radio" name="player-mode" checked=""></input>
+            <label for="2-player">2 Player</label>
+            <input id="2-player" type="radio" name="player-mode"></input>
+        </div>
+
+        <button id="restart">Restart</button>
+    </div>
+
+    <div id="info-area">
+
+    </div>
+
+    <div id="game-area">
+
+    </div>
+
     <!-- Font Awesome kit (placed at bottom of body to optimise page loading performance) -->
     <script src="https://kit.fontawesome.com/d2bb4adc27.js" crossorigin="anonymous"></script>
 </body>
