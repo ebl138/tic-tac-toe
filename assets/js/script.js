@@ -25,5 +25,15 @@ document.addEventListener("DOMContentLoaded", function(){
  * called when event listener is fired after 'click on box
  */
 function runGame(box){
-    alert("Game functionality not yet implemented.");
+    alert(playerMode());
+}
+
+/**
+ * Returns 1 if in 1 player mode and 2 if in 2 player mode
+ * @returns {number}
+ */
+function playerMode(){
+    let is1Player = document.getElementById('1-player').checked;
+    // If 1 player button selected, return 1 else (player 2 button is implicitly selected) return 2
+    return(is1Player ? 1 : 2);
 }
