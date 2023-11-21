@@ -25,7 +25,12 @@ document.addEventListener("DOMContentLoaded", function(){
  * called when event listener is fired after 'click on box
  */
 function runGame(box){
-    alert(playerMode());
+    if (playerMode() === 1){
+        takeTurn('x', box);
+        setTimeout(() => alert('Computer takes turn'), 500);
+    } else {
+        alert('2 player mode functionality yet to be implemented');
+    }
 }
 
 /**
@@ -36,4 +41,17 @@ function playerMode(){
     let is1Player = document.getElementById('1-player').checked;
     // If 1 player button selected, return 1 else (player 2 button is implicitly selected) return 2
     return(is1Player ? 1 : 2);
+}
+
+/**
+ * Places icon ('x' or 'o') in clicked box 
+ * @param {string} icon Icon to place in grid box, either 'x' or 'o'
+ * @param {HTMLDivElement} box One of nine boxes contained within grid
+ */
+function takeTurn(icon, box){
+    if (icon === 'x'){
+        box.innerHTML = '<i class="fa-regular fa-x"></i>'
+    } else {
+        box.innerHTML = '<i class="fa-regular fa-o"></i>'
+    }
 }
