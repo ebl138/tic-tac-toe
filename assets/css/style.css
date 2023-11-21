@@ -13,6 +13,26 @@ h1 {
     font-size: 300%;
 }
 
+/* Player mode (Player 1, Player 2 buttons) styles */
+/* Hide radio button circle */
+input[type='radio'] {
+    display: none;
+}
+
+input[type="radio"]:checked+label {
+    background-color: lightblue;
+}
+
+label {
+    margin: 0 2px;
+    padding: 2px;
+    border: solid;
+}
+
+label:hover {
+    cursor: pointer;
+}
+
 .game-area {
     display: flex;
     flex-direction: column;
