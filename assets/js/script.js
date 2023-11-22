@@ -27,7 +27,8 @@ document.addEventListener("DOMContentLoaded", function(){
 function runGame(box){
     if (playerMode() === 1){
         takeTurn('x', box);
-        setTimeout(() => alert('Computer takes turn'), 500);
+        // Wait 125 ms after player's turn to take computer's turn
+        setTimeout(() => computerTurn(), 125);
     } else {
         alert('2 player mode functionality yet to be implemented');
     }
@@ -54,4 +55,29 @@ function takeTurn(icon, box){
     } else {
         box.innerHTML = '<i class="fa-regular fa-o"></i>'
     }
+}
+
+/**
+ * Places 'o' in randomly selected box as computer's turn
+ */
+function computerTurn(){
+    let grid = document.getElementsByClassName('grid-area')[0];
+    let emptyBoxes = [];
+
+    // Loop to get all empty boxes and add to emptyBoxes array
+    // 'row of grid.children' gets each row in grid
+    for (let row of grid.children){
+        // 'box of row.children' gets each box in row
+        for (let box of row.children){
+            if (box.innerHTML === ''){
+                emptyBoxes.push(box);
+            }
+        }
+    }
+    
+    // As per algorithm for computer's turn, create random number to use to index into emptyBoxes
+    let randomNumber = Math.floor(Math.random() * emptyBoxes.length);
+    let computerBox = emptyBoxes[randomNumber];
+
+    takeTurn('o', computerBox);
 }
