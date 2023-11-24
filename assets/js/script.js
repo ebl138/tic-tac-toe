@@ -27,20 +27,34 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     }
 
+    // Event listener to listen for 'click' on Restart button, which will then clear each box of X or O
     let restartButton = document.getElementById('restart');
-
     restartButton.addEventListener('click', function(){
         let infoBar = document.getElementById('info-bar');
 
-        for (let row of grid.children){
-            // 'box of row.children' gets each box in row
-            for (let box of row.children){
-                // Empty each box
-                box.innerHTML = '';
-            }
-        }
+        clearGrid();
 
         infoBar.textContent = 'Game restarted!';
+    });
+
+    // Event listener for 1 player button to clear grid on click
+    let onePlayerButton = document.getElementById('1-player');
+    onePlayerButton.addEventListener('click', function(){
+        let infoBar = document.getElementById('info-bar');
+
+        clearGrid();
+
+        infoBar.textContent = 'Switched to 1 player mode!';
+    });
+
+    // Event listener for 2 player button to clear grid on click
+    let twoPlayerButton = document.getElementById('2-player');
+    twoPlayerButton.addEventListener('click', function(){
+        let infoBar = document.getElementById('info-bar');
+
+        clearGrid();
+
+        infoBar.textContent = 'Switched to 2 player mode!';
     });
 });
 
@@ -98,6 +112,9 @@ function playerMode(){
  * @param {HTMLDivElement} box One of nine boxes contained within grid
  */
 function takeTurn(icon, box){
+    let infoBar = document.getElementById('info-bar');
+    infoBar.textContent = 'Game of Tic Tac Toe';
+
     if (icon === 'x'){
         box.innerHTML = '<i class="fa-regular fa-x"></i>';
     } else {
@@ -212,5 +229,21 @@ function checkScore(){
     if (squareThree === o && squareFive === o && squareSeven === o){
         infoBar.textContent = 'O wins! Press Restart to play again.';
         return 'o';
+    }
+}
+
+/**
+ * Clears each box of X or O in grid
+ */
+function clearGrid(){
+    let grid = document.getElementsByClassName('grid-area')[0];
+
+    // 'row of grid.children' gets each row in grid
+    for (let row of grid.children){
+        // 'box of row.children' gets each box in row
+        for (let box of row.children){
+            // Empty each box
+            box.innerHTML = '';
+        }
     }
 }
