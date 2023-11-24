@@ -10,7 +10,11 @@ body {
 
 h1 {
     font-family: 'Tsukimi Rounded', sans-serif;
-    font-size: 300%;
+    font-size: 205%;
+}
+
+p {
+    font-size: 70%;
 }
 
 /* Player mode (Player 1, Player 2 buttons) styles */
@@ -27,16 +31,11 @@ label, #restart {
     margin: 0 3px;
     padding: 2px;
     border: solid;
-    font-size: 110%;
+    font-size: 95%;
 }
 
 label:hover {
     cursor: pointer;
-}
-
-#restart:hover {
-    cursor: pointer;
-    background-color: lightblue;
 }
 
 .game-area {
@@ -51,12 +50,22 @@ label:hover {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 330px;
+    width: 264px;
+}
+
+.info-area {
+    width: 264px;
+    text-align: center;
 }
 
 .grid-area {
     display: flex;
     flex-direction: column;
+}
+
+#restart:hover {
+    cursor: pointer;
+    background-color: lightblue;
 }
 
 #row-1, #row-2, #row-3 {
@@ -69,9 +78,34 @@ label:hover {
     /* Centre Xs and Os vertically and horizontally*/
     align-items: center;
     justify-content: center;
-    font-size: 450%;
+    font-size: 330%;
     background-color: lightblue;
-    height: 100px;
-    width: 100px;
+    height: 75px;
+    width: 75px;
     margin: 5px;
+}
+
+/* Media query: tablets and larger screens (768px and up) */
+@media screen and (min-width: 768px) {
+    h1 {
+        font-size: 300%;
+    }
+    
+    p {
+        font-size: 100%;
+    }
+    
+    label, #restart {
+        font-size: 110%;
+    }
+    
+    .controls-area {
+        width: 330px;
+    }
+    
+    #row-1 div, #row-2 div, #row-3 div {
+        font-size: 450%;
+        height: 100px;
+        width: 100px;
+    }
 }
