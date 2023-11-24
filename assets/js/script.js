@@ -1,6 +1,7 @@
 // Add event listener to detect when full DOM loaded
 document.addEventListener("DOMContentLoaded", function(){
     let grid = document.getElementsByClassName('grid-area')[0];
+    let infoBar = document.getElementById('info-bar');
 
     // 'row of grid.children' gets each row in grid
     for (let row of grid.children){
@@ -13,7 +14,14 @@ document.addEventListener("DOMContentLoaded", function(){
                     runGame(box);
                 // If box isn't empty, display message informing user
                 } else {
-                    document.getElementById('info-bar').textContent = 'That box isn\'t empty! Please choose an empty box.';
+                    if (checkScore() === 'x'){
+                        infoBar.textContent = 'X has already won! Press Restart to play again.';
+                    }
+                    else if (checkScore() === 'o'){
+                        infoBar.textContent = 'O has already won! Press Restart to play again.';
+                    } else {
+                        infoBar.textContent = 'That box isn\'t empty! Please choose an empty box.';
+                    }
                 }
             });
         }
@@ -25,23 +33,34 @@ document.addEventListener("DOMContentLoaded", function(){
  * called when event listener is fired after 'click on box
  */
 function runGame(box){
+    let infoBar = document.getElementById('info-bar');
+
     // If an empty box is clicked again, it is required to check if the game has already been won
     if (checkScore() === 'x'){
-        document.getElementById('info-bar').textContent = 'X has already won! Press Restart to play again.';
+        infoBar.textContent = 'X has already won! Press Restart to play again.';
         return;
     }
 
     if (checkScore() === 'o'){
-        document.getElementById('info-bar').textContent = 'O has already won! Press Restart to play again.';
+        infoBar.textContent = 'O has already won! Press Restart to play again.';
         return;
     }
 
     if (playerMode() === 1){
         takeTurn('x', box);
-        checkScore();
+
+        if (checkScore() === 'x'){
+            return;
+        }
+
         // Wait 125 ms after player's turn to take computer's turn
-        setTimeout(() => computerTurn(), 125);
-        checkScore();
+        // setTimeout(() => computerTurn(), 125);
+        computerTurn();
+
+        if (checkScore() === 'o'){
+            return;
+        }
+
     } else {
         alert('2 player mode functionality yet to be implemented');
     }
@@ -145,5 +164,40 @@ function checkScore(){
             infoBar.textContent = 'O wins! Press Restart to play again.';
             return 'o';
         }
+    }
+
+    // Check diagonally (squares 1, 5, 9 then squares 3, 5, 9)
+    let squareOne = document.getElementById('square-1').innerHTML;
+    let squareFive = document.getElementById('square-5').innerHTML;
+    let squareNine = document.getElementById('square-9').innerHTML;
+
+    // Check if X has won diagonally from top left to bottom right
+    if (squareOne === x && squareFive === x && squareNine === x){
+        infoBar.textContent = 'X wins! Press Restart to play again.';
+        return 'x';
+    }
+
+    //console.log("squareOne innerHTML: " + squareOne);
+    //console.log("squareOne, squareTwo, squareThree " + (squareOne, + " " + o + "\n" + squareFive + " " + o + "\n" + squareNine + " " + o));
+
+    // Check if O has won diagonally from top left to bottom right
+    if (squareOne === o && squareFive === o && squareNine === o){
+        infoBar.textContent = 'O wins! Press Restart to play again.';
+        return 'o';
+    }
+
+    let squareThree = document.getElementById('square-3').innerHTML;
+    let squareSeven = document.getElementById('square-7').innerHTML;
+
+    // Check if X has won diagonally from top right to bottom left
+    if (squareThree === x && squareFive === x && squareSeven === x){
+        infoBar.textContent = 'X wins! Press Restart to play again.';
+        return 'x';
+    }
+
+    // Check if O has won diagonally from top right to bottom left
+    if (squareThree === o && squareFive === o && squareSeven === o){
+        infoBar.textContent = 'O wins! Press Restart to play again.';
+        return 'o';
     }
 }
