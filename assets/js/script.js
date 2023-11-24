@@ -83,8 +83,6 @@ function runGame(box){
             return;
         }
 
-        // Wait 125 ms after player's turn to take computer's turn
-        // setTimeout(() => computerTurn(), 125);
         computerTurn();
 
         if (checkScore() === 'o'){
@@ -92,7 +90,16 @@ function runGame(box){
         }
 
     } else {
-        alert('2 player mode functionality yet to be implemented');
+        
+        takeTurn(whoseTurn(), box);
+
+        if (checkScore() === 'x'){
+            return;
+        }
+
+        if (checkScore() === 'o'){
+            return;
+        }
     }
 }
 
@@ -246,4 +253,31 @@ function clearGrid(){
             box.innerHTML = '';
         }
     }
+}
+
+/**
+ * Returns either 'x' (if it is player 1's turn) or 'o' (if it is player 2's turn); only used in 2 player mode
+ * @returns {string}
+ */
+function whoseTurn(){
+    let grid = document.getElementsByClassName('grid-area')[0];
+    let x = '<i class="fa-regular fa-x"></i>';
+    let o = '<i class="fa-regular fa-o"></i>';
+    let numberOfX = 0;
+    let numberOfO = 0;
+
+    // 'row of grid.children' gets each row in grid
+    for (let row of grid.children){
+        // 'box of row.children' gets each box in row
+        for (let box of row.children){
+            // Empty each box
+            if (box.innerHTML === x){
+                numberOfX++;
+            } else if (box.innerHTML === o){
+                numberOfO++;
+            }
+        }
+    }
+
+    return(numberOfX > numberOfO ? 'o' : 'x');
 }
