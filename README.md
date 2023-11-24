@@ -114,6 +114,10 @@ The live link can be found here: https://ebl138.github.io/tic-tac-toe/
  - The target audience of this site is people who have played Tic Tac Toe before and wish to practise their skills or pass the time
  - The typical target user will aim to improve their Tic Tac Toe skills by playing the game as much as they want, without refreshing the page, and to play themselves or with another person
 
+## Project contributions
+
+ - As this isn't open source software, there is no mechanism for any other developers (or anyone else) to contribute features or ideas to this project; if anyone wishes, however, please feel free to take inspiration from the project features and their underlying code for your own software
+
 ## Credits 
 
 ### Content
