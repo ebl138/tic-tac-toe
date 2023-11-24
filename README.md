@@ -124,6 +124,7 @@ The live link can be found here: https://ebl138.github.io/tic-tac-toe/
 
 - The icons for the 'X' and 'O' were taken from [Font Awesome](https://fontawesome.com/)
 - The Love Maths README.md template was used as the basis for this README.md
+- I used the Balsamiq Mockups app to create the wireframe, a screenshot of which is clearly labelled under the Design section above
 
 ### Media
 
