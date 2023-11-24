@@ -92,7 +92,7 @@ label:hover {
     }
     
     p {
-        font-size: 100%;
+        font-size: 90%;
     }
     
     label, #restart {
@@ -101,6 +101,11 @@ label:hover {
     
     .controls-area {
         width: 330px;
+    }
+
+    .info-area {
+        width: 330px;
+        text-align: center;
     }
     
     #row-1 div, #row-2 div, #row-3 div {

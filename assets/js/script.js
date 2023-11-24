@@ -16,9 +16,10 @@ document.addEventListener("DOMContentLoaded", function(){
                 } else {
                     if (checkScore() === 'x'){
                         infoBar.textContent = 'X has already won! Press Restart to play again.';
-                    }
-                    else if (checkScore() === 'o'){
+                    } else if (checkScore() === 'o'){
                         infoBar.textContent = 'O has already won! Press Restart to play again.';
+                    } else if (checkScore() === 'draw'){
+                        infoBar.textContent = 'Game already drawn! Press Restart to play again.';
                     } else {
                         infoBar.textContent = 'That box isn\'t empty! Please choose an empty box.';
                     }
@@ -76,21 +77,26 @@ function runGame(box){
         return;
     }
 
+    if (checkScore() === 'draw'){
+        infoBar.textContent = 'Game already drawn! Press Restart to play again.';
+        return;
+    }
+
     if (playerMode() === 1){
         takeTurn('x', box);
 
-        if (checkScore() === 'x'){
+        if (checkScore() === 'x' || checkScore() === 'draw'){
             return;
         }
 
         computerTurn();
 
-        if (checkScore() === 'o'){
+        if (checkScore() === 'o' || checkScore() === 'draw'){
             return;
         }
 
     } else {
-        
+
         takeTurn(whoseTurn(), box);
 
         if (checkScore() === 'x'){
@@ -237,6 +243,19 @@ function checkScore(){
         infoBar.textContent = 'O wins! Press Restart to play again.';
         return 'o';
     }
+
+    // Loop to check for draw
+    for (let row of grid.children){
+        for (let box of row.children){
+            if (box.innerHTML === ''){
+                // If there are still empty boxes, game can't be a draw
+                return;
+            }
+        }
+    }
+
+    infoBar.textContent = 'It\'s a draw!';
+    return 'draw';
 }
 
 /**
