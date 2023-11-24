@@ -26,6 +26,22 @@ document.addEventListener("DOMContentLoaded", function(){
             });
         }
     }
+
+    let restartButton = document.getElementById('restart');
+
+    restartButton.addEventListener('click', function(){
+        let infoBar = document.getElementById('info-bar');
+
+        for (let row of grid.children){
+            // 'box of row.children' gets each box in row
+            for (let box of row.children){
+                // Empty each box
+                box.innerHTML = '';
+            }
+        }
+
+        infoBar.textContent = 'Game restarted!';
+    });
 });
 
 /**
@@ -176,9 +192,6 @@ function checkScore(){
         infoBar.textContent = 'X wins! Press Restart to play again.';
         return 'x';
     }
-
-    //console.log("squareOne innerHTML: " + squareOne);
-    //console.log("squareOne, squareTwo, squareThree " + (squareOne, + " " + o + "\n" + squareFive + " " + o + "\n" + squareNine + " " + o));
 
     // Check if O has won diagonally from top left to bottom right
     if (squareOne === o && squareFive === o && squareNine === o){
