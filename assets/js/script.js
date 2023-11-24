@@ -165,7 +165,6 @@ function computerTurn(){
  * @returns {string}
  */
 function checkScore(){
-    let rowOne, rowTwo, rowThree, colOne, colTwo, colThree, diagOne, diagThree;
     let x = '<i class="fa-regular fa-x"></i>';
     let o = '<i class="fa-regular fa-o"></i>';
 
