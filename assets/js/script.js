@@ -129,9 +129,19 @@ function takeTurn(icon, box){
     infoBar.textContent = 'Game of Tic Tac Toe';
 
     if (icon === 'x'){
-        box.innerHTML = '<i class="fa-regular fa-x"></i>';
+        box.innerHTML = '<i class="fa-regular fa-x" aria-hidden="true"></i>';
     } else {
-        box.innerHTML = '<i class="fa-regular fa-o"></i>';
+        box.innerHTML = '<i class="fa-regular fa-o" aria-hidden="true"></i>';
+    }
+
+    if (checkScore() === 'x'){
+        infoBar.textContent = 'X wins! Press Restart to play again.';
+        return;
+    }
+
+    if (checkScore() === 'o'){
+        infoBar.textContent = 'O wins! Press Restart to play again.';
+        return;
     }
 }
 
@@ -165,8 +175,8 @@ function computerTurn(){
  * @returns {string}
  */
 function checkScore(){
-    let x = '<i class="fa-regular fa-x"></i>';
-    let o = '<i class="fa-regular fa-o"></i>';
+    let x = '<i class="fa-regular fa-x" aria-hidden="true"></i>';
+    let o = '<i class="fa-regular fa-o" aria-hidden="true"></i>';
 
     let grid = document.getElementsByClassName('grid-area')[0];
     // Column counter variable to keep track of column (used to check score in each column)
@@ -279,8 +289,8 @@ function clearGrid(){
  */
 function whoseTurn(){
     let grid = document.getElementsByClassName('grid-area')[0];
-    let x = '<i class="fa-regular fa-x"></i>';
-    let o = '<i class="fa-regular fa-o"></i>';
+    let x = '<i class="fa-regular fa-x" aria-hidden="true"></i>';
+    let o = '<i class="fa-regular fa-o" aria-hidden="true"></i>';
     let numberOfX = 0;
     let numberOfO = 0;
 
